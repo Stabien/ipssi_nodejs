@@ -1,9 +1,11 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <student-navbar v-if="auth === 'STUDENT'"/>
     <teacher-navbar v-if="auth === 'TEACHER'"/>
-    <router-view/>
-  </div>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
