@@ -10,7 +10,7 @@ const io = new Server(server, {
     }
 })
 const routes = require('./router')
-const {messages} = require("./controllers/messagesController");
+const {messages, postMessage} = require("./controllers/messagesController");
 
 const PORT = 4000
 
@@ -29,6 +29,8 @@ app.use((req, res, next) => {
 io.on('connection', (socket) => {
     socket.on('chat message', msg => {
         io.emit('chat message', msg)
+
+        postMessage(msg["message"],msg["senderID"],msg["receiverID"])
     })
 })
 

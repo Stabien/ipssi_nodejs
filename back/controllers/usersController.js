@@ -32,4 +32,15 @@ exports.getUser = async (req, res) => {
         });
     }
 }
+exports.authentication=async(req,res)=>{
+    const dbConnected = await db()
+    const users = dbConnected.collection('users')
+    const query={$and:[{email:req.body['email']},{password:req.body["password"]}]}
+    const queryResults=await users.find(query)
+    if (await queryResults.count()===0){
+        res.json({"result":"login and password don't correspond to a user"})
+    }else{
+        res.json({"result":"user is connected"})
+    }
+}
 
