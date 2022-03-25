@@ -16,6 +16,6 @@ module.exports = (app) => {
         .get(getAllUsers)
     app.route('/users/:id')
         .get(getUser)
-    app.route('users/authentication')
+    app.route('/users/authentication')
         .post(authentication)
 }
