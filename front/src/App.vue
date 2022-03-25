@@ -18,9 +18,12 @@ export default {
     StudentNavbar,
     TeacherNavbar
   },
+  mounted() {
+    this.$store.dispatch('initializeUsers')
+  },
   data() {
     return {
-      auth: 'STUDENT'
+      auth: 'TEACHER' // TODO Mettre le bon rôle
     }
   }
 }

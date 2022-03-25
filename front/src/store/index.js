@@ -9,6 +9,7 @@ export default new Vuex.Store({
     homeworks: [],
     students: [],
     teachers: [],
+    schoolClasses: {},
     user: {}
   },
   getters: {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     },
     students(state) {
       return state.students;
+    },
+    schoolClasses(state) {
+      return state.schoolClasses;
     }
   },
   mutations: {
@@ -26,6 +30,14 @@ export default new Vuex.Store({
     initializeUsers(state, data) {
       state.teachers = data.filter(user => user.role === 'TEACHER');
       state.students = data.filter(user => user.role === 'STUDENT');
+
+      // loop to build the state of schoolClasses
+      for (const user of state.students) {
+        state.schoolClasses = {
+          ...state.schoolClasses,
+          [user.class]: data.filter(u => u.class === user.class),
+        }
+      }
     }
   },
   actions: {
@@ -40,7 +52,8 @@ export default new Vuex.Store({
     async initializeUsers({ commit }) {
       try {
         const users = await axios.get('http://localhost:4000/users')
-        commit('initializeStudents', users.data)
+        console.log(users.data)
+        commit('initializeUsers', users.data)
       } catch (error) {
         throw new Error(error)
       }
