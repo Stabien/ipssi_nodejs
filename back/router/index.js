@@ -1,4 +1,10 @@
-const {getHomework, getAllHomeworks, deleteHomework, addHomework, addNoteToHomework} = require('../controllers/homeworksController')
+const {
+    getHomework,
+    getAllHomeworks,
+    deleteHomework,
+    addHomework,
+    addNoteToHomework
+} = require('../controllers/homeworksController')
 const {getAllUsers, getUser, authentication} = require('../controllers/usersController')
 const {allMessages} = require("../controllers/messagesController");
 

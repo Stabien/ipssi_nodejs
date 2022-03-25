@@ -6,8 +6,8 @@ exports.allMessages = async (req, res) => {
         const dbConnected = await db()
         const messages = dbConnected.collection('messages')
         const user = ObjectId(req.body["user"])
-        const otherUser=ObjectId(req.body["otherUser"])
-        const query = {$and:[{$or:[{$eq:{sender: user}}, {$eq:{receiver: otherUser}}]},{$or:[{$eq:{sender: otherUser}},{$eq:{receiver: user}}]}]}
+        const otherUser = ObjectId(req.body["otherUser"])
+        const query = {$and: [{$or: [{$eq: {sender: user}}, {$eq: {receiver: otherUser}}]}, {$or: [{$eq: {sender: otherUser}}, {$eq: {receiver: user}}]}]}
         const options = {sort: {date: 1}}
         const queryResults = messages.find(query, options)
         queryResults.toArray((err, results) => {

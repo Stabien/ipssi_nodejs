@@ -27,17 +27,19 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', '*');
     next()
 })
+// Socket.io chat
 io.on('connection', (socket) => {
     socket.on('chat message', msg => {
         io.emit('chat message', msg)
-        postMessage(msg["message"],msg["senderID"],msg["receiverID"]).then()
+        postMessage(msg["message"], msg["senderID"], msg["receiverID"]).then()
     })
 })
 
-
+// socket.io and the api don't listen on the same port because it causes conflicts
 server.listen(3000, function () {
     console.log('socket.io is on localhost:3000 !')
 })
+
 routes(app)
 app.listen(PORT, () => {
     console.log('Application running !' + PORT)
