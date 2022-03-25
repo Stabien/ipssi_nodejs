@@ -4,8 +4,8 @@ const {allMessages} = require("../controllers/messagesController");
 
 module.exports = (app) => {
 
-    app.route('/chat/:id')
-        .get(allMessages)
+    app.route('/chat')
+        .get(allMessages)//Need a body
     app.route('/homeworks')
         .get(getAllHomeworks)
         .post(addHomework)
