@@ -4,7 +4,6 @@
       class="d-flex justify-center"
       app
   >
-    <router-link to="/teacherDashboard" class="nav-item">Dashboard</router-link>
     <router-link to="/teacherHomeworks" class="nav-item">Devoirs</router-link>
     <router-link to="/teacherChat" class="nav-item">Contactez vos élèves</router-link>
   </v-app-bar>

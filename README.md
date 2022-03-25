@@ -45,4 +45,4 @@ Side information:
 * teacher password: PythonIsMyLife
 * student email: a.tonik@gmail.com
 * student password: Toniklo445987782
-* We are very sorry for the quality of this project, we were not enough organised
+* We are very sorry for the quality of this project, we have had some unexpected issues that slowed us down

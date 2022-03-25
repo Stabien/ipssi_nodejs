@@ -10,10 +10,7 @@ export default new Vuex.Store({
     students: [],
     teachers: [],
     schoolClasses: {},
-    user: {
-      id: null,
-      role: null
-    }
+    userRole: ''
   },
   getters: {
     homeworks(state) {
@@ -22,11 +19,14 @@ export default new Vuex.Store({
     students(state) {
       return state.students;
     },
+    teachers(state) {
+      return state.teachers;
+    },
     schoolClasses(state) {
       return state.schoolClasses;
     },
-    user(state) {
-      return state.user;
+    userRole(state) {
+      return state.userRole;
     }
   },
   mutations: {
@@ -45,9 +45,8 @@ export default new Vuex.Store({
         }
       }
     },
-    initializeCurrentUser(state, data) {
-      state.user.id = data.id;
-      state.user.role = data.role;
+    initializeCurrentUserRole(state, data) {
+      state.userRole = data
     }
   },
   actions: {
@@ -67,8 +66,8 @@ export default new Vuex.Store({
         throw new Error(error)
       }
     },
-    initializeCurrentUser({ commit }, payload) {
-      commit('initializeCurrentUser', payload)
+    initializeCurrentUserRole({ commit }, userRole) {
+      commit('initializeCurrentUserRole', userRole)
     }
   },
   modules: {

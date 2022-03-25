@@ -57,12 +57,15 @@ export default {
       .then(response => response.json())
       .then(response => {
         if (response.results[0].role) {
-          localStorage.setItem('userId', response.results[0].id);
+          localStorage.setItem('userId', response.results[0]._id);
           localStorage.setItem('userRole', response.results[0].role);
-          if (response.role === 'STUDENT') {
-            this.$router.push('/studentDashboard')
+          localStorage.setItem('userFirstname', response.results[0].firstname);
+          localStorage.setItem('userLastname', response.results[0].lastname);
+          if (localStorage.getItem('userRole') === 'STUDENT') {
+            this.$router.push('/studentHomeworks')
+            console.log(this.$store.getters.userRole)
           } else {
-            this.$router.push('/teacherDashboard')
+            this.$router.push('/teacherHomeworks')
           }
         }
       })
