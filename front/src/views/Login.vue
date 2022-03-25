@@ -13,6 +13,9 @@
         <v-text-field
           outlined
           label="Mot de passe"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="showPassword ? 'text' : 'password'"
+          @click:append="showPassword = !showPassword"
           required
           :value="passwordInput"
           @input="onPasswordChange"
@@ -30,7 +33,8 @@ export default {
   data() {
     return {
       emailInput: '',
-      passwordInput: ''
+      passwordInput: '',
+      showPassword: false,
     }
   },
   methods: {
