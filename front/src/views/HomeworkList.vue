@@ -26,7 +26,9 @@ import HomeworkListItem from './HomeworkListItem';
 
 export default {
   name: 'HomeworksList',
-  components: { HomeworkListItem },
+  components: {
+    HomeworkListItem
+  },
   mounted() {
     this.$store.dispatch('initializeHomeworks');
   },
