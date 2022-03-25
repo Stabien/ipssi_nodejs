@@ -30,8 +30,7 @@ app.use((req, res, next) => {
 io.on('connection', (socket) => {
     socket.on('chat message', msg => {
         io.emit('chat message', msg)
-
-        postMessage(msg["message"],msg["senderID"],msg["receiverID"])
+        postMessage(msg["message"],msg["senderID"],msg["receiverID"]).then()
     })
 })
 
