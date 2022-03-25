@@ -51,6 +51,7 @@ exports.addHomework = async (req, res) => {
         const dbConnected = await db()
         const homeworks = dbConnected.collection('homeworks')
         const document = req.body
+        document["date"]=new Date()
         const result = await homeworks.insertOne(document)
         res.json({"results": `A document was inserted with the _id: ${result.insertedId}`})
     } catch (error) {

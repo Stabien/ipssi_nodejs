@@ -27,7 +27,7 @@ exports.getUser = async (req, res) => {
     try {
         const dbConnected = await db()
         const users = dbConnected.collection('users')
-        const query = {_id: {$eq:ObjectId(req.params.id)}}
+        const query = {_id: {$eq: ObjectId(req.params.id)}}
         const options = {sort: {date: 1}}
         const queryResults = await users.find(query, options)
         queryResults.toArray((err, results) => {
@@ -45,7 +45,7 @@ exports.getUser = async (req, res) => {
 }
 exports.authentication = async (req, res) => {
     try {
-        const SECRET_KEY=process.env.JWT_SECRET_KEY
+        const SECRET_KEY = process.env.JWT_SECRET_KEY
         const dbConnected = await db()
         const users = dbConnected.collection('users')
         const query = {$and: [{email: {$eq: req.body['email']}}, {password: {$eq: req.body["password"]}}]}
@@ -57,15 +57,15 @@ exports.authentication = async (req, res) => {
             } else {
                 res.json(
                     {
-                        "results":results,
-                        "token":jwt.sign(
+                        "results": results,
+                        "token": jwt.sign(
                             {
-                                "id":results["_id"],
-                                "role":results["role"]
+                                "id": results["_id"],
+                                "role": results["role"]
                             },
                             SECRET_KEY,
                             {
-                                algorithm:"HS256"
+                                algorithm: "HS256"
                             }
                         )
                     }

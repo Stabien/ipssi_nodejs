@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "6239ee15b37762c2af1ea15c"
+  },
+  "class": "1B",
+  "homework": "Finir exercice page 12",
+  "role": "STUDENT",
+  "email": "l.man@gmail.com",
+  "password": "Namloi7884215",
+  "firstname": "Louise",
+  "lastname": "Man"
+},{
+  "_id": {
+    "$oid": "6239ee15b37762c2af1ea15d"
+  },
+  "class": "TA",
+  "homework": "Finir exercice page 2",
+  "role": "STUDENT",
+  "email": "a.tonik@gmail.com",
+  "password": "Toniklo445987782",
+  "firstname": "Alfred",
+  "lastname": "Tonik"
+},{
+  "_id": {
+    "$oid": "6239ee15b37762c2af1ea15e"
+  },
+  "class": "TB",
+  "homework": "Ajouter un element json",
+  "role": "STUDENT",
+  "email": "l.kaliou@gmail.com",
+  "password": "Namloi7884215",
+  "firstname": "Lauryn",
+  "lastname": "Kaliou"
+},{
+  "_id": {
+    "$oid": "6239ee5eb37762c2af1ea160"
+  },
+  "class": "2A",
+  "homework": "Apprendre VUEJS",
+  "role": "STUDENT",
+  "email": "d.dabik@gmail.com",
+  "password": "Danik98865",
+  "firstname": "Frank",
+  "lastname": "Danik"
+},{
+  "_id": {
+    "$oid": "6239ee5eb37762c2af1ea161"
+  },
+  "class": "2B",
+  "homework": "lire livre page 8",
+  "role": "STUDENT",
+  "email": "r.fanz@gmail.com",
+  "password": "Faniz755482",
+  "firstname": "Robert",
+  "lastname": "Fanz"
+},{
+  "_id": {
+    "$oid": "6239ee5eb37762c2af1ea162"
+  },
+  "class": "1A",
+  "homework": "Finir exercice de mathématique",
+  "role": "STUDENT",
+  "email": "a.yuan@gmail.com",
+  "password": "Faniz755482",
+  "firstname": "Antonio",
+  "lastname": "yuan"
+},{
+  "_id": {
+    "$oid": "6239f27db37762c2af1ea164"
+  },
+  "subject": "Mathématique",
+  "role": "TEACHER",
+  "email": "t.jalou@gmail.com",
+  "password": "TotoLeRigolo",
+  "firstname": "Toma",
+  "lastname": "Jalou"
+},{
+  "_id": {
+    "$oid": "6239f27db37762c2af1ea165"
+  },
+  "subject": "Français",
+  "role": "TEACHER",
+  "email": "d.salam@gmail.com",
+  "password": "PythonIsMyLife",
+  "firstname": "Dabien",
+  "lastname": "Salam"
+},{
+  "_id": {
+    "$oid": "6239f27db37762c2af1ea166"
+  },
+  "subject": "Histoire",
+  "role": "TEACHER",
+  "email": "b.maindallu@gmail.com",
+  "password": "PGSUZYV78553",
+  "firstname": "Basmien",
+  "lastname": "Maindallu"
+},{
+  "_id": {
+    "$oid": "6239f27db37762c2af1ea167"
+  },
+  "subject": "Anglais",
+  "role": "TEACHER",
+  "email": "y.douane@gmail.com",
+  "password": "Ldzuia794282",
+  "firstname": "Yaneu",
+  "lastname": "Douane"
+},{
+  "_id": {
+    "$oid": "6239f27db37762c2af1ea168"
+  },
+  "subject": "Sport",
+  "role": "TEACHER",
+  "email": "c.macave@gmail.com",
+  "password": "ziudBzi981891",
+  "firstname": "Civil",
+  "lastname": "Macave"
+}]
