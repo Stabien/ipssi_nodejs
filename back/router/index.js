@@ -1,4 +1,4 @@
-const {getHomework, getAllHomeworks, deleteHomework, addHomework} = require('../controllers/homeworksController')
+const {getHomework, getAllHomeworks, deleteHomework, addHomework, addNoteToHomework} = require('../controllers/homeworksController')
 const {getAllUsers, getUser, authentication} = require('../controllers/usersController')
 const {allMessages} = require("../controllers/messagesController");
 
@@ -11,6 +11,7 @@ module.exports = (app) => {
         .post(addHomework)
     app.route('/homeworks/:id')
         .get(getHomework)
+        .put(addNoteToHomework)
         .delete(deleteHomework)
     app.route('/users')
         .get(getAllUsers)

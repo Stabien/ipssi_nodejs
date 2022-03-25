@@ -56,7 +56,27 @@ exports.addHomework = async (req, res) => {
     } catch (error) {
         res.json({"error": error})
     }
-
+}
+exports.addNoteToHomework = async (req, res) => {
+    try {
+        const dbConnected = await db()
+        const homeworks = dbConnected.collection('homeworks')
+        const filter = {_id: {$eq: ObjectId(req.params.id)}}
+        const updateDoc = {
+            $set: {
+                note: req.body["note"],
+                comments: req.body["comments"]
+            }
+        }
+        const result = await homeworks.updateOne(filter, updateDoc)
+        if (result.modifiedCount===0){
+            res.json({"result": false})
+        }else{
+            res.json({"result":true})
+        }
+    } catch (error) {
+        res.json(error)
+    }
 }
 exports.deleteHomework = async (req, res) => {
     try {

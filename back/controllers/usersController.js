@@ -27,7 +27,7 @@ exports.getUser = async (req, res) => {
     try {
         const dbConnected = await db()
         const users = dbConnected.collection('users')
-        const query = {_id: ObjectId(req.params.id)}
+        const query = {_id: {$eq:ObjectId(req.params.id)}}
         const options = {sort: {date: 1}}
         const queryResults = await users.find(query, options)
         queryResults.toArray((err, results) => {
