@@ -1,5 +1,7 @@
 const db = require('../db')
 const {ObjectId} = require("mongodb");
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
 
 
 exports.getAllUsers = async (req, res) => {
