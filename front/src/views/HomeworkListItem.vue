@@ -2,29 +2,30 @@
   <div>
     <v-card class="">
       <template>
-        <v-card-title>{{homeworkTitle}}</v-card-title>
-        <v-card-subtitle class="d-flex">{{homework.date}}</v-card-subtitle>
+        <v-card-title>{{ homeworkTitle }}</v-card-title>
+        <v-card-subtitle class="d-flex">{{ homework.date }}</v-card-subtitle>
       </template>
       <v-card-text class="d-flex flex-column align-start">
         <div class="my-4 text-subtitle-1">
-          Note: {{homework.note || 'Non noté'}}
+          Note: {{ homework.note || 'Non noté' }}
         </div>
         <div
             class="my-4 text-subtitle-1"
             v-bind:class="{'font-italic': !isCommented }"
         >
-          Commentaires: {{homework.comments || 'À remplir'}}
+          Commentaires: {{ homework.comments || 'À remplir' }}
         </div>
       </v-card-text>
       <v-card-actions>
         <template>
           <v-btn
+              v-if="user === 'TEACHER'"
               text
               color="primary"
               @click="openFormDialog"
           >
             <v-icon small>
-              {{isCorrected ? 'mdi-pencil' : 'mdi-plus-circle'}}
+              {{ isCorrected ? 'mdi-pencil' : 'mdi-plus-circle' }}
             </v-icon>
             {{ isCorrected ? 'Modifier' : 'Noter' }}
           </v-btn>
@@ -38,7 +39,7 @@
       >
         <v-card>
           <v-card-title class="text-h5">
-            {{isCorrected ? 'Modifier une note' : 'Ajouter une note'}}
+            {{ isCorrected ? 'Modifier une note' : 'Ajouter une note' }}
           </v-card-title>
 
           <v-divider></v-divider>
@@ -86,12 +87,18 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HomeworkListItem',
   props: {
     homework: {
       required: true,
       type: Object
+    },
+    user: {
+      required: true,
+      type: String
     }
   },
   data() {
@@ -109,7 +116,11 @@ export default {
   },
   computed: {
     homeworkTitle() {
-      return `${this.homework.firstname} ${this.homework.lastname} - ${this.homework.subject}`;
+      if (this.user === 'TEACHER') {
+        return `${this.homework.firstname} ${this.homework.lastname} - ${this.homework.subject}`;
+      } else {
+        return this.homework.subject;
+      }
     },
     isCommented() {
       return this.homework.comments !== '';
@@ -129,7 +140,7 @@ export default {
     submit() {
       axios({
         method: 'put',
-        url: 'http://localhost:4000/homeworks/' + this.homework._id, //TODO Ajouter la bonne route
+        url: 'http://localhost:4000/homeworks/' + this.homework._id,
         data: {
           note: this.note,
           comments: this.comments,

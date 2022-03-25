@@ -23,7 +23,7 @@ export default {
   },
   data() {
     return {
-      auth: 'TEACHER' // TODO Mettre le bon rôle
+      auth: localStorage.getItem('userRole')
     }
   }
 }
