@@ -50,21 +50,20 @@ export default {
         password: this.passwordInput
       }
       fetch('http://localhost:4000/users/authentication', {
+        headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify(body)
       })
       .then(response => response.json())
       .then(response => {
-        if (response.role) {
-          localStorage.setItem('userId', response.id);
-          localStorage.setItem('userRole', response.role);
+        if (response.results[0].role) {
+          localStorage.setItem('userId', response.results[0].id);
+          localStorage.setItem('userRole', response.results[0].role);
           if (response.role === 'STUDENT') {
             this.$router.push('/studentDashboard')
           } else {
-            this.router.push('/teacherDashboard')
+            this.$router.push('/teacherDashboard')
           }
-        } else {
-          console.log(response);
         }
       })
     }

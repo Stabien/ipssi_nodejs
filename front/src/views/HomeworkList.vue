@@ -11,7 +11,7 @@
       <v-col
         v-for="(homework, index) in (homeworksChoice)"
         :key="index"
-        lg="4"
+        lg="3"
         md="4"
         sm="6"
         cols="12"
