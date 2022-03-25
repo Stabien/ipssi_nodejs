@@ -1,7 +1,6 @@
 const db = require('../db')
 const {ObjectId} = require("mongodb");
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv').config();
 
 
 exports.getAllUsers = async (req, res) => {
@@ -46,6 +45,7 @@ exports.getUser = async (req, res) => {
 }
 exports.authentication = async (req, res) => {
     try {
+        const SECRET_KEY=process.env.JWT_SECRET_KEY
         const dbConnected = await db()
         const users = dbConnected.collection('users')
         const query = {$and: [{email: {$eq: req.body['email']}}, {password: {$eq: req.body["password"]}}]}
@@ -55,7 +55,21 @@ exports.authentication = async (req, res) => {
             if (results.length === 0) {
                 res.json({"result": "no users found"})
             } else {
-                res.json(results)
+                res.json(
+                    {
+                        "results":results,
+                        "token":jwt.sign(
+                            {
+                                "id":results["_id"],
+                                "role":results["role"]
+                            },
+                            SECRET_KEY,
+                            {
+                                algorithm:"HS256"
+                            }
+                        )
+                    }
+                )
             }
         })
     } catch (error) {

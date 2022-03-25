@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser')
 const express = require('express')
+const dotenv = require('dotenv').config();
 const app = express()
 const http = require('http')
 const server = http.createServer(app)
@@ -10,7 +11,7 @@ const io = new Server(server, {
     }
 })
 const routes = require('./router')
-const {messages, postMessage} = require("./controllers/messagesController");
+const {postMessage} = require("./controllers/messagesController");
 
 const PORT = 4000
 
