@@ -98,8 +98,8 @@ export default {
     return {
       showFormDialog: false,
       isValidForm: false,
-      note: '',
-      comments: '',
+      note: this.homework.note,
+      comments: this.homework.comments,
       noteRules: [
         v => !!v || 'Note is required',
         v => (v && v.length <= 8) || 'The note must be less than 8 characters',
@@ -109,7 +109,7 @@ export default {
   },
   computed: {
     homeworkTitle() {
-      return `${this.homework.firstname} ${this.homework.firstname} - ${this.homework.subject}`;
+      return `${this.homework.firstname} ${this.homework.lastname} - ${this.homework.subject}`;
     },
     isCommented() {
       return this.homework.comments !== '';
@@ -129,12 +129,14 @@ export default {
     submit() {
       axios({
         method: 'put',
-        url: '', //TODO Ajouter la bonne route
+        url: 'http://localhost:4000/homeworks/' + this.homework._id, //TODO Ajouter la bonne route
         data: {
           note: this.note,
           comments: this.comments,
         }
-      });
+      }).then(() => {
+        this.$store.dispatch('initializeHomeworks')
+      } );
       this.closeFormDialog();
     },
   }
