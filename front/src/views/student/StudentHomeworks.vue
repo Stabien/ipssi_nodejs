@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Liste de vos devoirs</h1>
-    <homework-list class="homework-list" :data="homeworks"/>
+    <homework-list user="STUDENT" class="homework-list"/>
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <v-switch
+        v-if="user === 'TEACHER'"
         v-model="isCorrectedHomeworks"
         input-value=true
         inset
@@ -15,7 +16,7 @@
         sm="6"
         cols="12"
       >
-        <homework-list-item :homework="homework"/>
+        <homework-list-item :user="user" :homework="homework"/>
       </v-col>
     </v-row>
   </v-container>
@@ -29,6 +30,12 @@ export default {
   components: {
     HomeworkListItem
   },
+  props: {
+    user: {
+      required: true,
+      type: String
+    }
+  },
   mounted() {
     this.$store.dispatch('initializeHomeworks');
   },
@@ -39,10 +46,14 @@ export default {
   },
   computed: {
     homeworksChoice() {
-      const uncorrectedHomeworks = this.$store.getters.homeworks.filter(h => h.note === '');
-      const correctedHomeworks = this.$store.getters.homeworks.filter(h => h.note !== '');
+      if (this.user === 'TEACHER') {
+        const uncorrectedHomeworks = this.$store.getters.homeworks.filter(h => h.note === '');
+        const correctedHomeworks = this.$store.getters.homeworks.filter(h => h.note !== '');
 
-      return this.isCorrectedHomeworks ? correctedHomeworks : uncorrectedHomeworks
+        return this.isCorrectedHomeworks ? correctedHomeworks : uncorrectedHomeworks
+      } else {
+        return this.$store.getters.homeworks
+      }
     }
   }
 }

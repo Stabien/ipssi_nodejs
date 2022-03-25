@@ -1,6 +1,6 @@
 <template>
   <div>
-    <homework-list />
+    <homework-list user="TEACHER"/>
   </div>
 </template>
 
